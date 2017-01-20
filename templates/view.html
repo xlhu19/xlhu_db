@@ -1,0 +1,18 @@
+$def with (table, page)
+
+$var title: $page.url
+
+$if (table == 'design'):
+    $ page_name = 'design'
+$elif (table == 'linux_command'):
+    $ page_name = page.command
+$elif (table == 'linux_software'):
+    $ page_name = 'software'
+$else:
+    $ page_name = 'unknown'
+
+<h1>$page_name</h1>
+
+<a href="/edit/$page.url">Edit</a>
+
+$:markdown(page.content)

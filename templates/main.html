@@ -1,0 +1,11 @@
+$def with (db, pages)
+
+$if (db == 'linux_command'):
+    <h1>linux command</h1>
+$else:
+    <h1>linux software</h1>
+
+<ul>
+$for page in pages:
+    <li><a href="/view/$page.url">$page.command</a></li>
+</ul>
