@@ -37,6 +37,8 @@ def get_id_by_url(table, url):
 def new_page(table, url, title, text):
     if (table == 'linux_command'):
         db.insert(table, url=url, command=title, content=text)
+    if (table == 'linux_software'):
+        db.insert(table, url=url, title=title, content=text)
 
 def del_page(table, id):
     db.delete(table, where="id=$id", vars=locals())

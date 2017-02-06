@@ -24,6 +24,7 @@ render = web.template.render('templates', base='base', globals=t_globals)
 ### index.html
 class Index:
     def GET(self):
+        current_page = "index"
         return render.index(None)
 
 class Design:
@@ -53,14 +54,15 @@ class Page:
 
 class New:
     def not_page_exists(url):
-        return not bool(model.get_pages_by_key('linux_command', 'url', url))
+        t = model.get_table_by_url(url)
+        return not bool(model.get_pages_by_key(t, 'url', url))
     page_exists_validator = web.form.Validator('Page already exists', 
                                 not_page_exists)
     form = web.form.Form(
         web.form.Textbox('url', web.form.notnull, page_exists_validator,
             size=30,
             description="Location:"),
-        web.form.Textbox('command', web.form.notnull, 
+        web.form.Textbox('title', web.form.notnull, 
             size=30,
             description="Page title:"),
         web.form.Textarea('content', web.form.notnull, 
@@ -79,7 +81,8 @@ class New:
         form = self.form()
         if not form.validates():
             return render.new(form)
-        model.new_page('linux_command', form.d.url, form.d.title, form.d.content)
+        t = model.get_table_by_url(form.d.url)
+        model.new_page(t, form.d.url, form.d.title, form.d.content)
         raise web.seeother('/view/' + form.d.url)
 
 

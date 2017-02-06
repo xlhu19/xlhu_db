@@ -2,10 +2,13 @@ $def with (db, pages)
 
 $if (db == 'linux_command'):
     <h1>linux command</h1>
+    <ul>
+    $for page in pages:
+        <li><a href="/view/$page.url">$page.command</a></li>
+    </ul>
 $else:
     <h1>linux software</h1>
-
-<ul>
-$for page in pages:
-    <li><a href="/view/$page.url">$page.command</a></li>
-</ul>
+    <ul>
+    $for page in pages:
+        <li><a href="/view/$page.url">$page.title</a></li>
+    </ul>

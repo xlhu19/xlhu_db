@@ -15,7 +15,6 @@ body
     margin-bottom: 0px;
     margin-left: 10%;
     padding: 0;
-    border: 1px solid gray;
     box-sizing: border-box;
     -moz-box-sizing: border-box; /* Firefox */
     -webkit-box-sizing: border-box; /* Safari */
@@ -25,12 +24,16 @@ body
 {
     /* background-color: blue;*/
     height: 15%;
+    border: 2px solid gray;
+    border-bottom: 1px solid gray;
     /* border-width:1px 1px 0.5px 1px;*/
    /*  border:1px solid;*/
 }
 
 #div_1_center
 {
+    border: 2px solid gray;
+    border-top: 1px solid gray;
     /* background-color: gray;*/
     /* height: 80%;*/
     /*border-width: 0.5px 1px 1px 1px;*/
